@@ -2,6 +2,7 @@
 
 <% if Current.user.present? %>
   <%= button_to "Sign out", session_path, method: :delete  %>
+  <%= link_to "Trips", trips_path %>
 <% else %>
   <%= link_to "Sign in", new_session_path %>
 <% end %>

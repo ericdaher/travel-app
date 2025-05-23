@@ -1,0 +1,45 @@
+<h1>New trip</h1>
+
+<%= form_with model: @trip do |form| %>
+  <div>
+    <%= form.label :name %>
+    <%= form.text_field :name %>
+    <% @trip.errors.messages_for(:name).each do |error| %>
+      <span><%= error %><span>
+    <% end %>
+  </div>
+
+  <div>
+    <%= form.label :description %>
+    <%= form.text_field :description %>
+    <% @trip.errors.messages_for(:description).each do |error| %>
+      <span><%= error %><span>
+    <% end %>
+  </div>
+
+  <div>
+    <%= form.label :destination %>
+    <%= form.text_field :destination %>
+    <% @trip.errors.messages_for(:destination).each do |error| %>
+      <span><%= error %><span>
+    <% end %>
+  </div>
+
+  <div>
+    <%= form.label :start_date %>
+    <%= form.date_field :start_date %>
+    <% @trip.errors.messages_for(:start_date).each do |error| %>
+      <span><%= error %><span>
+    <% end %>
+  </div>
+
+  <div>
+    <%= form.label :end_date %>
+    <%= form.date_field :end_date %>
+    <% @trip.errors.messages_for(:end_date).each do |error| %>
+      <span><%= error %><span>
+    <% end %>
+  </div>
+
+  <%= form.submit %>
+<% end %>

@@ -1,0 +1,15 @@
+one:
+  user: one
+  start_date: <%= Time.now %>
+  end_date: <%= Time.now + 1.day %>
+  destination: 'Destination'
+  name: 'Name'
+  description: 'Description'
+
+two:
+  user: one
+  start_date: <%= Time.now %>
+  end_date: <%= Time.now + 1.day %>
+  destination: 'Destination'
+  name: 'Name'
+  description: 'Description'

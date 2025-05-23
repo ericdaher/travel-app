@@ -1,0 +1,7 @@
+<% if @trips.any? %>
+  <h1>You have <%= @trips.count %> trips</h1>
+<% else %>
+  <h1>No trips yet :(</h1>
+
+  <%= link_to 'New trip', new_trip_path %>
+<% end %>
