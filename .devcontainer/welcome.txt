@@ -1,2 +1,1 @@
-👋 Welcome!
-🛠️ Your environment is fully setup with all the required software.
+👋 Welcome! Your environment is fully setup with all the required software.
