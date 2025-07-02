@@ -4,7 +4,6 @@
 {
   "name": "DevContainer",
   "features": {},
-  "updateRemoteUserUID": true,
   "build": {
     "dockerfile": "Dockerfile"
   },

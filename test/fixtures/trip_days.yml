@@ -1,0 +1,3 @@
+one:
+  trip: one
+  day: <%= Date.current %>
