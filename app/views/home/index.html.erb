@@ -7,8 +7,14 @@
   <% end %>
 </header>
 
-<main class="bg-blue-500 mx-4 xl:w-10/12 xl:mx-auto">
+<main class="bg-blue-500 mx-4 xl:w-10/12 xl:mx-auto rounded-md p-4">
   <h1 class="text-3xl text-red-500 font-bold underline">
     Hello world!
   </h1>
+
+  <% @locations.each do |location| %>
+    <div class="m-4">
+      <h2><%= location.address %></h2>
+    </div>
+  <% end %>
 </main>

@@ -9,4 +9,7 @@
 #   end
 
 puts "Creating users..."
-user = User.create(email_address: 'user@mail', password: '123456', password_confirmation: '123456')
+User.create(email_address: 'user@mail', password: '123456', password_confirmation: '123456')
+
+puts "Creating locations..."
+Location.create(address: "Rua Oscar Chiareli, 610")
