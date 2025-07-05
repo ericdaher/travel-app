@@ -1,5 +1,6 @@
 class Outing < ApplicationRecord
   belongs_to :trip_day
+  belongs_to :location
 
   after_save :update_lat_lng, if: :saved_change_to_address?
 

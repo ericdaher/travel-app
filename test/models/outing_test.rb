@@ -9,16 +9,15 @@ class OutingTest < ActiveSupport::TestCase
     @outing = outings(:one)
   end
 
-  test "should change lat/lng after saving changes to address" do
-    @outing.address = "New"
-    assert_enqueued_with(job: Outings::UpdateLatLngJob) do
-      @outing.save
-    end
+  test "should not save an outing without a trip_day" do
+    @outing.trip_day = nil
+    assert_not @outing.save
+    assert_includes @outing.errors.messages[:trip_day], "must exist"
+  end
 
-    perform_enqueued_jobs
-
-    @outing.reload
-    assert_equal @outing.lat, 1.23
-    assert_equal @outing.lng, 4.56
+  test "should not save an outing without a location" do
+    @outing.location = nil
+    assert_not @outing.save
+    assert_includes @outing.errors.messages[:location], "must exist"
   end
 end

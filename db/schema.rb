@@ -10,15 +10,23 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2025_07_02_004136) do
-  create_table "outings", force: :cascade do |t|
-    t.integer "trip_day_id", null: false
-    t.datetime "time"
+ActiveRecord::Schema[8.0].define(version: 2025_07_03_223156) do
+  create_table "locations", force: :cascade do |t|
     t.string "address"
     t.decimal "lat"
     t.decimal "lng"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "rating"
+  end
+
+  create_table "outings", force: :cascade do |t|
+    t.integer "trip_day_id", null: false
+    t.datetime "time"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.integer "location_id", null: false
+    t.index ["location_id"], name: "index_outings_on_location_id"
     t.index ["trip_day_id"], name: "index_outings_on_trip_day_id"
   end
 
@@ -59,6 +67,7 @@ ActiveRecord::Schema[8.0].define(version: 2025_07_02_004136) do
     t.index ["email_address"], name: "index_users_on_email_address", unique: true
   end
 
+  add_foreign_key "outings", "locations"
   add_foreign_key "outings", "trip_days"
   add_foreign_key "sessions", "users"
   add_foreign_key "trip_days", "trips"

@@ -64,3 +64,7 @@ group :test do
   gem "selenium-webdriver"
   gem "simplecov", require: false, group: :test
 end
+
+gem "tailwindcss-ruby", "~> 4.1"
+
+gem "tailwindcss-rails", "~> 4.2"

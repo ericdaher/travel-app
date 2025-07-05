@@ -1,8 +1,14 @@
-<h1>Hello world!</h1>
+<header class="my-4 px-4 flex justify-self-end radius-4">
+  <% if Current.user.present? %>
+    <%= button_to "Sign out", session_path, method: :delete  %>
+    <%= link_to "Trips", trips_path %>
+  <% else %>
+    <%= link_to "Sign in", new_session_path %>
+  <% end %>
+</header>
 
-<% if Current.user.present? %>
-  <%= button_to "Sign out", session_path, method: :delete  %>
-  <%= link_to "Trips", trips_path %>
-<% else %>
-  <%= link_to "Sign in", new_session_path %>
-<% end %>
+<main class="bg-blue-500 mx-4 xl:w-10/12 xl:mx-auto">
+  <h1 class="text-3xl text-red-500 font-bold underline">
+    Hello world!
+  </h1>
+</main>
