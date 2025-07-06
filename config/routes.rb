@@ -15,7 +15,15 @@ Rails.application.routes.draw do
   # Defines the root path route ("/")
   # root "posts#index"
 
+  # ActionCable
+  mount ActionCable.server => "/cable"
+
   root "home#index"
 
-  resources :trips, only: [ :index, :new, :create ]
+  resources :locations, only: [ :index, :show, :new, :create ] do
+    member do
+      get :increment_rating
+      get :decrement_rating
+    end
+  end
 end

@@ -1,0 +1,29 @@
+<h1>New location</h1>
+
+<%= form_with model: @location do |form| %>
+  <div>
+    <%= form.label :name %>
+    <%= form.text_field :name %>
+    <% @location.errors.messages_for(:name).each do |error| %>
+      <span><%= error %><span>
+    <% end %>
+  </div>
+
+  <div>
+    <%= form.label :description %>
+    <%= form.text_area :description %>
+    <% @location.errors.messages_for(:description).each do |error| %>
+      <span><%= error %><span>
+    <% end %>
+  </div>
+
+  <div>
+    <%= form.label :address %>
+    <%= form.text_field :address %>
+    <% @location.errors.messages_for(:address).each do |error| %>
+      <span><%= error %><span>
+    <% end %>
+  </div>
+
+  <%= form.submit %>
+<% end %>

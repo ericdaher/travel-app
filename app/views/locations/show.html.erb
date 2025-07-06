@@ -1,0 +1,9 @@
+<p>Name: <%= @location.name %></p>
+<p>Description: <%= @location.description %></p>
+<p>Address: <%= @location.address %></p>
+<p>Latitude: <%= @location.lat %></p>
+<p>Longitude: <%= @location.lng %></p>
+<p class="locationRating">Rating: <%= @location.rating %></p>
+
+<%= link_to "Increment rating", increment_rating_location_path, id: 'test', method: :get %>
+<%= link_to "Decrement rating", decrement_rating_location_path, method: :get %>

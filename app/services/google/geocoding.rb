@@ -14,7 +14,7 @@ module Google
       uri.query = URI.encode_www_form(params)
 
       res = Net::HTTP.get_response(uri)
-      res.is_a?(Net::HTTPSuccess) ? res.body : {}
+      res.is_a?(Net::HTTPSuccess) ? JSON.parse(res.body) : {}
     end
   end
 end
