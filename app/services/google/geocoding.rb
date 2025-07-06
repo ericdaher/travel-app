@@ -9,6 +9,8 @@ module Google
     private
 
     def self.geocode(address)
+      return {} if ENV.fetch("GOOGLE_API_KEY").nil?
+
       uri = URI("https://maps.googleapis.com/maps/api/geocode/json")
       params = { address: address, key: ENV.fetch("GOOGLE_API_KEY") }
       uri.query = URI.encode_www_form(params)

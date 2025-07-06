@@ -1,13 +1,20 @@
 class LocationsController < ApplicationController
   def index
-    @locations = Location.all
-    @location = @location.from_user(Current.user) if params[:filter] == "mine"
+    puts Current.user
+    if Current.user.present?
+      @locations = Location.order(rating: :desc)
+      @locations = @location.from_user(Current.user) if params[:filter] == "mine"
+    else
+      @locations = Rails.cache.fetch("top_locations") do
+        Location.top_3
+      end
+    end
   end
 
   def show
     @location = Location.find(params[:id])
   rescue ActiveRecord::RecordNotFound
-    redirect_to locations_path, alert: "Location not found" if @location.nil?
+    redirect_to locations_path, alert: "Local não encontrado" if @location.nil?
   end
 
   def new

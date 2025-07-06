@@ -1,20 +1,13 @@
-<header class="my-4 px-4 flex justify-self-end radius-4">
-  <% if Current.user.present? %>
-    <%= button_to "Sign out", session_path, method: :delete  %>
-    <%= link_to "Trips", trips_path %>
-  <% else %>
-    <%= link_to "Sign in", new_session_path %>
-  <% end %>
-</header>
-
-<main class="bg-blue-500 mx-4 xl:w-10/12 xl:mx-auto rounded-md p-4">
-  <h1 class="text-3xl text-red-500 font-bold underline">
-    Hello world!
-  </h1>
+<main class="mx-4 xl:w-10/12 xl:mx-auto rounded-md p-4">
+  <div class="bg-white rounded-md border-2 border-solid border-gray-300 p-4 flex justify-between">
+    <h1 class="text-3xl font-bold">Locais recomendados</h1>
+    <%= link_to "Adicionar", new_location_path, class: "text-white bg-sky-500 rounded-md p-2 hover:cursor-pointer" %>
+  </div>
 
   <% @locations.each do |location| %>
-    <div class="m-4">
-      <h2><%= location.address %></h2>
-    </div>
+    <%= link_to location_path(location), class:"m-4 bg-white rounded-md border-2 border-solid border-gray-300 p-4 flex justify-between hover:cursor-pointer" do %>
+      <h2><%= location.name %></h2>
+      <h2>Nota: <%= location.rating %></h2>
+    <% end %>
   <% end %>
 </main>

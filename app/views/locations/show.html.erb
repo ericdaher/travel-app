@@ -1,9 +1,14 @@
-<p>Name: <%= @location.name %></p>
-<p>Description: <%= @location.description %></p>
-<p>Address: <%= @location.address %></p>
-<p>Latitude: <%= @location.lat %></p>
-<p>Longitude: <%= @location.lng %></p>
-<p class="locationRating">Rating: <%= @location.rating %></p>
+<main class="mx-4 xl:w-10/12 xl:mx-auto rounded-md p-4">
+  <h1 class="text-3xl font-bold bg-white rounded-md border-2 border-solid border-gray-300 p-4 mb-4">
+    <%= @location.name %>
+  </h1>
 
-<%= link_to "Increment rating", increment_rating_location_path, id: 'test', method: :get %>
-<%= link_to "Decrement rating", decrement_rating_location_path, method: :get %>
+  <div class="text-lg bg-white rounded-md border-2 border-solid border-gray-300 p-4 mb-4">
+    <p><%= @location.description %></p>
+    <p>Endereço: <%= @location.address %></p>
+    <p class="locationRating">Nota: <%= @location.rating %></p>
+  </div>
+
+  <%= link_to "Aumentar nota", increment_rating_location_path, class: "text-white bg-sky-500 rounded-md p-2 hover:cursor-pointer", method: :get %>
+  <%= link_to "Diminuir nota", decrement_rating_location_path, class: "text-white bg-sky-500 rounded-md p-2 hover:cursor-pointer", method: :get %>
+</main>

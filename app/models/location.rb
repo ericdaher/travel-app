@@ -4,6 +4,9 @@ class Location < ApplicationRecord
   after_save :update_lat_lng, if: :saved_change_to_address?
   after_save :broadcast_rating_change, if: :saved_change_to_rating?
 
+  scope :with_lat_lng, -> { where.not(lat: nil, lng: nil) }
+  scope :top_3, -> { order(rating: :desc).limit(3) }
+
   private
 
   def update_lat_lng
