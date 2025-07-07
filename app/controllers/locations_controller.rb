@@ -12,9 +12,10 @@ class LocationsController < ApplicationController
   end
 
   def show
-    @location = Location.find(params[:id])
+    location = Location.find(params[:id])
+    @location_presenter = LocationPresenter.new(location: location)
   rescue ActiveRecord::RecordNotFound
-    redirect_to locations_path, alert: "Local não encontrado" if @location.nil?
+    redirect_to locations_path, alert: "Local não encontrado" if location.nil?
   end
 
   def new

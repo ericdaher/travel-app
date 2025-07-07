@@ -1,14 +1,20 @@
 <main class="mx-4 xl:w-10/12 xl:mx-auto rounded-md p-4">
   <h1 class="text-3xl font-bold bg-white rounded-md border-2 border-solid border-gray-300 p-4 mb-4">
-    <%= @location.name %>
+    <%= @location_presenter.name %>
   </h1>
 
   <div class="text-lg bg-white rounded-md border-2 border-solid border-gray-300 p-4 mb-4">
-    <p><%= @location.description %></p>
-    <p>Endereço: <%= @location.address %></p>
-    <p class="locationRating">Nota: <%= @location.rating %></p>
+    <p><%= @location_presenter.description %></p>
+    <p>Endereço: <%= @location_presenter.address %></p>
+    <p class="locationRating">Nota: <%= @location_presenter.rating %></p>
   </div>
 
   <%= link_to "Aumentar nota", increment_rating_location_path, class: "text-white bg-sky-500 rounded-md p-2 hover:cursor-pointer", method: :get %>
   <%= link_to "Diminuir nota", decrement_rating_location_path, class: "text-white bg-sky-500 rounded-md p-2 hover:cursor-pointer", method: :get %>
+
+  <% if @location_presenter.google_map_image_url.present? %>
+    <div class="text-lg bg-white rounded-md border-2 border-solid border-gray-300 p-4 mt-4">
+      <%= image_tag @location_presenter.google_map_image_url %>
+    </div>
+  <% end %>
 </main>

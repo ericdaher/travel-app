@@ -1,11 +1,16 @@
-<%= tag.div(flash[:alert], style: "color:red") if flash[:alert] %>
-<%= tag.div(flash[:notice], style: "color:green") if flash[:notice] %>
+<main class="mx-4 xl:w-10/12 xl:mx-auto rounded-md p-4">
+  <%= tag.div(flash[:alert], style: "color:red") if flash[:alert] %>
+  <%= tag.div(flash[:notice], style: "color:green") if flash[:notice] %>
 
-<%= form_with url: session_path do |form| %>
-  <%= form.email_field :email_address, required: true, autofocus: true, autocomplete: "username", placeholder: "Enter your email address", value: params[:email_address] %><br>
-  <%= form.password_field :password, required: true, autocomplete: "current-password", placeholder: "Enter your password", maxlength: 72 %><br>
-  <%= form.submit "Sign in" %>
-<% end %>
-<br>
+  <%= form_with url: session_path, class: "text-md bg-white rounded-md border-2 border-solid border-gray-300 mx-auto p-4 mb-4" do |form| %>
+    <div class="flex gap-4 mb-4">
+      <%= form.email_field :email_address, required: true, class: "rounded-md border-2 border-solid border-gray-300 w-full p-2", autofocus: true, autocomplete: "username", placeholder: "Email", value: params[:email_address] %>
+    </div>
+    <div class="flex gap-4 mb-4">
+      <%= form.password_field :password, required: true, class: "rounded-md border-2 border-solid border-gray-300 w-full p-2", autocomplete: "current-password", placeholder: "Enter your password", maxlength: 72 %>
+    </div>
+    <%= form.submit "Entrar", class: "text-white bg-sky-500 rounded-md p-2 hover:cursor-pointer flex justify-self-end" %>
+  <% end %>
 
-<%= link_to "Forgot password?", new_password_path %>
+  <%= link_to "Esqueceu sua senha?", new_password_path, class: "text-white bg-red-500 rounded-md p-2 hover:cursor-pointer" %>
+</main>
