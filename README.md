@@ -62,4 +62,4 @@ O cache interno do Rails possibilita que partes da aplicação não precisem sem
 O padrão Repository consiste em isolar as interações de um modelo com o banco de dados, favorecendo a separação entre a aplicação e o banco. Nesse projeto, os escopos criados para 
 o model Location foram transferidos para o LocationRepository.
 
-* Os conceitos foram, obviamente, utilizados de maneira a exemplificar suas aplicações - uma aplicação desse escopo só se prejudica por utilizar coisas como o padrão Repository.
+_Os conceitos foram, obviamente, utilizados de maneira a exemplificar suas aplicações - uma aplicação desse escopo só se prejudica por utilizar coisas como o padrão Repository._
