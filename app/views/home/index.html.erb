@@ -5,9 +5,13 @@
   </div>
 
   <% @locations.each do |location| %>
-    <%= link_to location_path(location), class:"m-4 bg-white rounded-md border-2 border-solid border-gray-300 p-4 flex justify-between hover:cursor-pointer" do %>
-      <h2><%= location.name %></h2>
-      <h2>Nota: <%= location.rating %></h2>
-    <% end %>
+    <div class="flex w-full content-center items-center">
+      <%= link_to location_path(location), class:"m-4 bg-white rounded-md border-2 border-solid border-gray-300 p-4 flex justify-between hover:cursor-pointer w-full" do %>
+        <h2><%= location.name %></h2>
+        <h2>Nota: <%= location.rating %></h2>
+      <% end %>
+      <%= link_to "Editar", edit_location_path(location), class: "text-white bg-sky-500 rounded-md m-4 p-2 hover:cursor-pointer" %>
+      <%= button_to "Excluir", location, method: :delete, class: "text-white bg-red-500 rounded-md m-4 p-2 hover:cursor-pointer", data: { turbo_confirm: "Tem certeza?" } %>
+    </div>
   <% end %>
 </main>

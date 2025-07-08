@@ -1,16 +1,4 @@
 class LocationsController < ApplicationController
-  def index
-    puts Current.user
-    if Current.user.present?
-      @locations = Location.order(rating: :desc)
-      @locations = @location.from_user(Current.user) if params[:filter] == "mine"
-    else
-      @locations = Rails.cache.fetch("top_locations") do
-        Location.top_3
-      end
-    end
-  end
-
   def show
     location = Location.find(params[:id])
     @location_presenter = LocationPresenter.new(location: location)
@@ -29,6 +17,26 @@ class LocationsController < ApplicationController
     else
       render "new", status: :unprocessable_entity
     end
+  end
+
+  def edit
+    @location = Location.find(params[:id])
+  end
+
+  def update
+    @location = Location.find(params[:id])
+    if @location.update(location_params)
+      redirect_to @location
+    else
+      render "show", status: :unprocessable_entity
+    end
+  end
+
+  def destroy
+    @location = Location.find(params[:id])
+    @location.destroy
+
+    redirect_to root_path
   end
 
   def increment_rating

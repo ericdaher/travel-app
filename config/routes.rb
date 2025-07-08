@@ -20,7 +20,7 @@ Rails.application.routes.draw do
 
   root "home#index"
 
-  resources :locations, only: [ :index, :show, :new, :create ] do
+  resources :locations, only: [ :show, :new, :create, :edit, :update, :destroy ] do
     member do
       get :increment_rating
       get :decrement_rating
